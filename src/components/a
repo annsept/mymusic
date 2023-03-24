@@ -1,0 +1,62 @@
+<template>
+<div>
+</div>
+</template>
+        
+    <script>
+    /* eslint-disable */
+    import service from '@/request/index.js'
+    import Vue from 'vue';
+    import {mapState} from "vuex";
+    
+    
+    
+    export default {
+      name: 'artist',
+      components: {
+        MusicPlay,
+      },
+      data() {
+        return {
+
+        }
+        
+      },
+
+    mounted() {
+
+      },
+      updated(){
+      },
+
+      methods: {
+
+        searchmusic(id) {
+          console.log("歌曲id");
+          console.log(id);
+          service({
+            method: 'get',
+            url: '/song/url',
+            params: {
+              id:id,
+            }
+          }).then((response) => {
+            console.log('music--searchmusic:');
+            console.log(response.data.data[0]);
+            this.music=response.data;
+            this.MusicUrl = response.data.data[0].url;
+          })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+
+    },
+    computed:{
+
+    }
+    }
+    </script>
+        
+    <style lang="less" scoped>
+    </style>

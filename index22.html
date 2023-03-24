@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+<script src="vue.js" type="text/javascript"></script>
+
+<style>
+    .hello
+    {
+        background-color:yellowgreen;
+    }
+    .hi
+    {
+        background-color:red;
+    }
+</style>
+</head>
+
+<body>
+<div id="first">
+<hahaha></hahaha>
+</div>
+
+    <script type="text/javascript">
+
+Vue.component('hahaha', {
+    template:`
+   <div>
+     <div  @click="a" :style="'color:'+color">
+     whats my color? {{color}}
+     </div>
+     <input v-if="show" v-model="color"></input>
+
+    <p :class={hello:1}>hello</p>
+   </div>
+
+    `,
+        data: function () {
+            return{
+            color:'blue',
+            show:true
+            }
+        },
+        methods:{
+            a() {
+                this.show=!this.show;
+                console.log("why click me?"+this.color);
+            }
+        },
+})
+
+new Vue({
+  el: '#first'
+})
+
+    </script>
+    <script> Vue.config.productionTip=false </script>
+</body>
+
+</html>
